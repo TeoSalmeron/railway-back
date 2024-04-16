@@ -18,6 +18,9 @@ app.use(cors({
 const loginRouter = require("./routes/Login")
 app.use("/login", loginRouter)
 
+const authRouter = require("./routes/Auth")
+app.use("/auth", authRouter)
+
 app.listen(port, () => {
     console.log("Server listening on port : " + port)
 })
