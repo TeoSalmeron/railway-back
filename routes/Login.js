@@ -41,8 +41,8 @@ router.post("/", async (req, res) => {
             // Send cookie with token
             res.cookie('token', jwtToken, {
                 httpOnly: true,
-                secure: process.env.NODE_ENV !== 'development',
-                sameSite: 'strict', 
+                secure: process.env.NODE_ENV === 'production',
+                sameSite: 'None', 
                 maxAge: 3600000
             })
 
