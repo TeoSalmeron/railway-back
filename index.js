@@ -16,7 +16,11 @@ app.use(cors({
 
 app.get("/", async (req, res) => {
     const token = req.cookies.token
-    return res.json({token: token})
+    if(token) {
+        return res.json({token: token})
+    } else {
+        return res.json({token: "no token"})
+    }
 })
 
 // ROUTES
