@@ -14,6 +14,11 @@ app.use(cors({
     credentials: true
 }))
 
+app.get("/", async (req, res) => {
+    const token = req.cookies.token
+    return res.json({token: token})
+})
+
 // ROUTES
 const loginRouter = require("./routes/Login")
 app.use("/login", loginRouter)
