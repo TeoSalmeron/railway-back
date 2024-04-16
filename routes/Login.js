@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
     // Check if passwords match
     bcryptjs.compare(post.password, user.password, (err, match) => {
         if(err) {
-            throw err
+            return res.status(400).send("Impossible de vérifier les mots de passe")
         } else if (!match) {
             return res.status(401).send("Le mot de passe est incorrect")
         } else {
