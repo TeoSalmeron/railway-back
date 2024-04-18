@@ -3,17 +3,14 @@ const router = express.Router()
 
 router.get("/", (req, res) => {
 
-    const token = req.cookies.token
+    res.clearCookie("token", {
+        path: "/",
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: "none"
+    })
+    return res.status(200).json({logout: true})
 
-    if(token) {
-        res.clearCookie("token", {
-            path: "/",
-            sameSite: "none"
-        })
-        return res.status(200).json({logout: true})
-    } else {
-        return res.status(200).json({logout: false})
-    }
 
 })
 
