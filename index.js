@@ -18,6 +18,9 @@ app.use(cors({
 const loginRouter = require("./routes/Login")
 app.use("/login", loginRouter)
 
+const logOutRouter = require("./routes/Logout")
+app.use("/logout", logOutRouter)
+
 const authRouter = require("./routes/Auth")
 app.use("/auth", authRouter)
 

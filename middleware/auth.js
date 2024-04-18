@@ -5,7 +5,7 @@ const auth = (req, res, next) => {
     if (token) {
         jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
             if (err) {
-                return res.status(400).send("Erreur lors de la récupération du token")
+                return res.json({auth: false})
             } else {
                 req.userId = decoded.id
                 req.userEmail = decoded.email
@@ -14,7 +14,7 @@ const auth = (req, res, next) => {
             }
         });
     } else {
-        return res.status(401).send("Un token est nécessaire pour vérifier l'authentification")
+        return res.json({auth: false})
     }
 }
 
