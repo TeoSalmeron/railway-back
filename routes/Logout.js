@@ -7,7 +7,8 @@ router.get("/", (req, res) => {
 
     if(token) {
         res.clearCookie("token", {
-            path: "/"
+            path: "/",
+            sameSite: "none"
         })
         return res.status(200).json({logout: true})
     } else {
