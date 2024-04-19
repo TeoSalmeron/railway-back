@@ -68,11 +68,11 @@ router.post("/search", upload.none(), async (req, res) => {
     try {
         const [results] = await db.query(sql, params);
         if (results.length === 0) {
-            throw new Error("Aucun véhicule ne correspond à vos critères");
+            return res.status(200).json({results: false, message: "Aucun véhicule ne correspond à vos critères"})
         }
-        res.status(200).json(results);
+        return res.status(200).json({results: results});
     } catch (error) {
-        res.status(400).send(error.message);
+        return res.status(400).send(error.message);
     }
 })
 
