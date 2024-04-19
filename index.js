@@ -24,6 +24,12 @@ app.use("/logout", logOutRouter)
 const authRouter = require("./routes/Auth")
 app.use("/auth", authRouter)
 
+const createEmployeeRouter = require("./routes/CreateEmployee")
+app.use("/create-employee", createEmployeeRouter)
+
+const schedulesRouter = require("./routes/Schedules")
+app.use("/schedules", schedulesRouter)
+
 app.listen(port, () => {
     console.log("Server listening on port : " + port)
 })
